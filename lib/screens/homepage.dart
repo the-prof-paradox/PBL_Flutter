@@ -1,8 +1,8 @@
+import 'package:PBL/screens/jumbled.dart';
 import 'package:flutter/material.dart';
 import 'package:PBL/constants.dart';
 import 'package:PBL/screens/crossword.dart';
 import 'package:PBL/screens/quizz.dart';
-import 'package:PBL/screens/extras.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -45,10 +45,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: MediaQuery.of(context).size.width * 0.45,
                   child: RaisedButton(
                     color: Colors.redAccent,
-                    child: Text("Decision Tree",
+                    child: Text("Jumbled Words",
                         style: TextStyle(color: Colors.white, fontSize: 22.0),
                         textAlign: TextAlign.center),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Jumbled()));
+                    },
                   ),
                 ),
               ],
@@ -147,12 +152,12 @@ class TheDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.add),
-            title: Text("Decision Tree"),
+            title: Text("Jumbled Words"),
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => Extra()));
+                      builder: (BuildContext context) => Jumbled()));
             },
           ),
           Container(
