@@ -1,0 +1,59 @@
+{
+    "quizz":[
+        {
+            "id": 1,
+            "question": "In a binary classification problem, what is ACCURACY?",
+            "options": [
+                "TP/(TP+FN)",
+                "(TP+TN)/(TP+FN+FP+TN)",
+                "TN/(TN+FP)",
+                "(TP+FP)/(TP+FN+FP+TN)"
+            ],
+            "answer": "(TP+TN)/(TP+FN+FP+TN)"
+        },
+        {
+            "id": 2,
+            "question": "Which of the following is not an advantage of the K-NN algorithm?",
+            "options": [
+                "Sensitive to irrelevant features",
+                "No hyperparameter tuning required",
+                "It is simple to implement",
+                "It has no explicit training phase hence it is fast"
+            ],
+            "answer": "Sensitive to irrelevant features"
+        },
+        {
+            "id": 3,
+            "question": "How is F-score calculated?",
+            "options": [
+                "(2*Precision*Recall)/(Precision+2*Recall)",
+                "(0.2*Precision*Recall)/(Precision+Recall)",
+                "(2*Precision*Recall)/(2*Precision+Recall)",
+                "(2*Precision*Recall)/(Precision+Recall)"
+            ],
+            "answer": "(2*Precision*Recall)/(Precision+Recall)"
+        },
+        {
+            "id": 4,
+            "question": "In a binary classification problem, what is PRECISION?",
+            "options": [
+                "TN/(TP+FN)",
+                "(TP+TN)/(TP+FP)",
+                "TP/(TP+FP)",
+                "(TP+FP)/(TP+FN+FP+TN)"
+            ],
+            "answer": "TP/(TP+FP)"
+        },
+        {
+            "id": 5,
+            "question": "What is K-NN algorithm can be used for?",
+            "options": [
+                "Regression",
+                "classification",
+                "Both",
+                "None"
+            ],
+            "answer": "Both"
+        }
+    ]
+}

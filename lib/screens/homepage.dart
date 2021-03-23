@@ -17,17 +17,73 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text("PBL App!"),
         ),
         drawer: TheDrawer(),
-        body: Container(
+        body: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: RaisedButton(
+                    color: Colors.redAccent,
+                    child: Text(
+                      "Crossword",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22.0,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: RaisedButton(
+                    color: Colors.redAccent,
+                    child: Text("Decision Tree",
+                        style: TextStyle(color: Colors.white, fontSize: 22.0),
+                        textAlign: TextAlign.center),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 25.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: RaisedButton(
+                    color: Colors.redAccent,
+                    child: Text("Quizz",
+                        style: TextStyle(color: Colors.white, fontSize: 22.0),
+                        textAlign: TextAlign.center),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Quizz()));
+                    },
+                  ),
+                ),
+                // RaisedButton(
+                //   child: Text(""),
+                //   onPressed: (){
 
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("TODO:"),
-              Text("1)Landing page with a summary of profile"),
-              Text("2) Leaderboard pe jaane ke liye button"),
-              Text("3) Quizz, Crossword, etc ke liye buttons"),
-              Text("4) Background & logo design"),
-            ],
+                //   },
+                // ),
+              ],
+            ),
+          ],
         )));
   }
 }
@@ -54,13 +110,15 @@ class TheDrawer extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    userName=='' ?
-                    Text('Guest 696',
-                      style: TextStyle(fontSize: 24.0),
-                    ) :
-                    Text(userName,
-                      style: TextStyle(fontSize: 24.0),
-                    ),
+                    userName == ''
+                        ? Text(
+                            'Guest 696',
+                            style: TextStyle(fontSize: 24.0),
+                          )
+                        : Text(
+                            userName,
+                            style: TextStyle(fontSize: 24.0),
+                          ),
                     Text("Rating: ⭐⭐⭐⭐"),
                   ],
                 ),
@@ -71,21 +129,30 @@ class TheDrawer extends StatelessWidget {
             leading: Icon(Icons.add),
             title: Text("Quizz"),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Quizz()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Quizz()));
             },
           ),
           ListTile(
             leading: Icon(Icons.add),
             title: Text("Crossword"),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Crossword()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Crossword()));
             },
           ),
           ListTile(
             leading: Icon(Icons.add),
             title: Text("Decision Tree"),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Extra()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Extra()));
             },
           ),
           Container(
@@ -98,18 +165,22 @@ class TheDrawer extends StatelessWidget {
                     shape: StadiumBorder(),
                     color: Colors.deepOrange,
                     onPressed: () {
-                      showAboutDialog(
+                      showDialog(
                         context: context,
-                        children: [
-                          AlertDialog(
-                            actions: [
-                              FlatButton(onPressed: (){
-                                Navigator.pop(context);
-                              }, child: Text("Tu chal chal ave"))
-                            ],
+                        child: AlertDialog(
+                          content: Text(
+                            'Chal Chal ave',
+                            style: TextStyle(fontSize: 20.0),
                           ),
-                        ]
-                        );
+                          actions: [
+                            FlatButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text("Tu chal chal ave"))
+                          ],
+                        ),
+                      );
                     },
                     child: Text("Logout")),
               ],
