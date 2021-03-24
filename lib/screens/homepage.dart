@@ -102,13 +102,18 @@ class TheDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
+
         children: [
           DrawerHeader(
+            decoration: BoxDecoration(color: Colors.redAccent),
               child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               CircleAvatar(
-                child: Icon(Icons.people),
+                radius: MediaQuery.of(context).size.width * 0.10,
+                child: Icon(Icons.face,
+                color: Colors.white,
+                size: MediaQuery.of(context).size.width * 0.20,),
               ),
               // VerticalDivider(),
               Container(
@@ -118,11 +123,11 @@ class TheDrawer extends StatelessWidget {
                     userName == ''
                         ? Text(
                             'Guest 696',
-                            style: TextStyle(fontSize: 24.0),
+                            style: TextStyle(fontSize: 30.0),
                           )
                         : Text(
                             userName,
-                            style: TextStyle(fontSize: 24.0),
+                            style: TextStyle(fontSize: 30.0),
                           ),
                     Text("Rating: ⭐⭐⭐⭐"),
                   ],
@@ -132,7 +137,7 @@ class TheDrawer extends StatelessWidget {
           )),
           ListTile(
             leading: Icon(Icons.add),
-            title: Text("Quizz"),
+            title: Text("Quizz", style: TextStyle(fontSize: 20.0),),
             onTap: () {
               Navigator.push(
                   context,
@@ -142,7 +147,7 @@ class TheDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.add),
-            title: Text("Crossword"),
+            title: Text("Crossword", style: TextStyle(fontSize: 20.0),),
             onTap: () {
               Navigator.push(
                   context,
@@ -152,7 +157,7 @@ class TheDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.add),
-            title: Text("Jumbled Words"),
+            title: Text("Jumbled Words", style: TextStyle(fontSize: 20.0),),
             onTap: () {
               Navigator.push(
                   context,
@@ -160,37 +165,37 @@ class TheDrawer extends StatelessWidget {
                       builder: (BuildContext context) => Jumbled()));
             },
           ),
-          Container(
-            padding: EdgeInsets.all(5.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.add),
-                FlatButton(
-                    shape: StadiumBorder(),
-                    color: Colors.deepOrange,
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        child: AlertDialog(
-                          content: Text(
-                            'Chal Chal ave',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                          actions: [
-                            FlatButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: Text("Tu chal chal ave"))
-                          ],
-                        ),
-                      );
-                    },
-                    child: Text("Logout")),
-              ],
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.all(5.0),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.start,
+          //     children: [
+          //       Icon(Icons.add),
+          //       FlatButton(
+          //           shape: StadiumBorder(),
+          //           color: Colors.deepOrange,
+          //           onPressed: () {
+          //             showDialog(
+          //               context: context,
+          //               child: AlertDialog(
+          //                 content: Text(
+          //                   'Chal Chal ave',
+          //                   style: TextStyle(fontSize: 20.0),
+          //                 ),
+          //                 actions: [
+          //                   FlatButton(
+          //                       onPressed: () {
+          //                         Navigator.pop(context);
+          //                       },
+          //                       child: Text("Tu chal chal ave"))
+          //                 ],
+          //               ),
+          //             );
+          //           },
+          //           child: Text("Logout")),
+          //     ],
+          //   ),
+          // ),
         ],
       ),
     );

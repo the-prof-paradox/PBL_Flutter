@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
               textAlign: TextAlign.center,
               textDirection: TextDirection.rtl,
               decoration: InputDecoration(
-                hintText:  "Username",
+                hintText:  "Player Name",
               ),
               maxLines: 1,
               controller: textEditingController,

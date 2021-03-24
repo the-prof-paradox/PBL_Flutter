@@ -1,4 +1,5 @@
 import 'package:PBL/businessLogic/jumblesQues.dart';
+import 'package:PBL/screens/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -27,11 +28,28 @@ class _JumbledState extends State<Jumbled> {
 
     setState(() {
       if (quizBrain.isFinished() == true) {
-        Alert(
-          context: context,
-          title: 'Finished!',
-          desc: 'You\'ve reached the end of the quiz!',
-        ).show();
+        // Alert(
+        //   context: context,
+        //   title: 'Finished!',
+        //   desc: 'You\'ve reached the end of the Jumbled Words!',
+        // ).show();
+        showDialog(context: context,
+        barrierDismissible: true,
+        child: AlertDialog(
+          title: Text('Finished!', textAlign: TextAlign.center,),
+          content: Text('You\'re score is: $theScore', textAlign: TextAlign.center,),
+          actions: [
+            FlatButton(
+              onPressed: (){
+                Navigator.pushReplacement(context, 
+                MaterialPageRoute(
+                      builder: (BuildContext context) => MyHomePage())
+                      );
+              },
+              child: Text("Ok"),),
+          ],
+          )
+        );
         quizBrain.reset();
         scoreKeeper = [];
         theScore = 0;
@@ -103,6 +121,7 @@ class _JumbledState extends State<Jumbled> {
                     // color: Colors.white,
                   ),
                 ),
+                Divider(),
                 Text(
                   quizBrain.getOptionText(),
                   textAlign: TextAlign.center,

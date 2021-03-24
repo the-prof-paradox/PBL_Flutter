@@ -1,4 +1,5 @@
 import 'package:PBL/businessLogic/quizQues.dart';
+import 'package:PBL/screens/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -18,11 +19,28 @@ class _QuizzState extends State<Quizz> {
 
     setState(() {
       if (quizBrain.isFinished() == true) {
-        Alert(
-          context: context,
-          title: 'Finished!',
-          desc: 'You\'ve reached the end of the quiz!',
-        ).show();
+        // Alert(
+        //   context: context,
+        //   title: 'Finished!',
+        //   desc: 'You\'ve reached the end of the quiz!',
+        // ).show();
+        showDialog(context: context,
+        barrierDismissible: true,
+        child: AlertDialog(
+          title: Text('Finished!', textAlign: TextAlign.center,),
+          content: Text('You\'re score is: $theScore', textAlign: TextAlign.center,),
+          actions: [
+            FlatButton(
+              onPressed: (){
+                Navigator.pushReplacement(context, 
+                MaterialPageRoute(
+                      builder: (BuildContext context) => MyHomePage())
+                      );
+              },
+              child: Text("Ok"),),
+          ],
+          )
+        );
         quizBrain.reset();
         scoreKeeper = [];
         theScore = 0;
