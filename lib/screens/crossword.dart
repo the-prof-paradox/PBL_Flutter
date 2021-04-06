@@ -1,3 +1,5 @@
+import 'package:PBL/businessLogic/CrossWord/crossWrdUI.dart';
+import 'package:PBL/businessLogic/CrossWord/hints1.dart';
 import 'package:flutter/material.dart';
 
 class Crossword extends StatefulWidget {
@@ -9,17 +11,26 @@ class _CrosswordState extends State<Crossword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("CrossWord"),
+        centerTitle: true,
+      ),
       body: Container(
-      child: Center(
-        child: Column(
+        child: Center(
+            child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          Text("TODO:"),
-          Text("Implement Crossword UI"),
-          Text("and it's business logic")
-        ],)
+            CrossWord1(),
+          ],
+        )),
       ),
-    )
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Hints1()));
+        },
+        label: Text("Hints!"),
+      ),
     );
   }
 }

@@ -1,8 +1,7 @@
 import 'package:PBL/businessLogic/jumblesQues.dart';
 import 'package:PBL/screens/homepage.dart';
 import 'package:flutter/material.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
-
+//import 'package:rflutter_alert/rflutter_alert.dart';
 
 JumbQuizBrain quizBrain = JumbQuizBrain();
 
@@ -22,7 +21,6 @@ class _JumbledState extends State<Jumbled> {
     super.dispose();
   }
 
-  
   void checkAnswer(String userPickedAnswer) {
     String correctAnswer = quizBrain.getCorrectAnswer();
 
@@ -33,29 +31,36 @@ class _JumbledState extends State<Jumbled> {
         //   title: 'Finished!',
         //   desc: 'You\'ve reached the end of the Jumbled Words!',
         // ).show();
-        showDialog(context: context,
-        barrierDismissible: true,
-        child: AlertDialog(
-          title: Text('Finished!', textAlign: TextAlign.center,),
-          content: Text('You\'re score is: $theScore', textAlign: TextAlign.center,),
-          actions: [
-            FlatButton(
-              onPressed: (){
-                Navigator.pushReplacement(context, 
-                MaterialPageRoute(
-                      builder: (BuildContext context) => MyHomePage())
-                      );
-              },
-              child: Text("Ok"),),
-          ],
-          )
+        showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (context) => AlertDialog(
+            title: Text(
+              'Finished!',
+              textAlign: TextAlign.center,
+            ),
+            content: Text(
+              'You\'re score is: $theScore',
+              textAlign: TextAlign.center,
+            ),
+            actions: [
+              FlatButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => MyHomePage()));
+                },
+                child: Text("Ok"),
+              ),
+            ],
+          ),
         );
+
         quizBrain.reset();
         scoreKeeper = [];
         theScore = 0;
-      }
-
-      else {
+      } else {
         if (userPickedAnswer == correctAnswer) {
           theScore++;
           scoreKeeper.add(Icon(
@@ -114,7 +119,7 @@ class _JumbledState extends State<Jumbled> {
             child: Column(
               children: [
                 Text(
-                quizBrain.getQuestionText(),
+                  quizBrain.getQuestionText(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25.0,
@@ -136,20 +141,23 @@ class _JumbledState extends State<Jumbled> {
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.59,
             child: TextField(
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.rtl,
-                decoration: InputDecoration(
-                  hintText:  "Type your answer here",
-                ),
-                maxLines: 1,
-                controller: textEditingController,
-                cursorHeight: 20.0,
+              textAlign: TextAlign.center,
+              textDirection: TextDirection.rtl,
+              decoration: InputDecoration(
+                hintText: "Type your answer here",
               ),
+              maxLines: 1,
+              controller: textEditingController,
+              cursorHeight: 20.0,
+            ),
           ),
-          SizedBox(height: 9.0,),
+          SizedBox(
+            height: 9.0,
+          ),
           RaisedButton(
               color: Colors.orange,
-              child: Text("Submit",
+              child: Text(
+                "Submit",
                 style: TextStyle(fontSize: 16.0),
                 textAlign: TextAlign.center,
               ),

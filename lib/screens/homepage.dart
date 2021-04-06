@@ -37,7 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Crossword()));
+                    },
                   ),
                 ),
                 SizedBox(
@@ -102,42 +107,46 @@ class TheDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(color: Colors.redAccent),
+              decoration: BoxDecoration(color: Colors.redAccent),
               child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              CircleAvatar(
-                radius: MediaQuery.of(context).size.width * 0.10,
-                child: Icon(Icons.face,
-                color: Colors.white,
-                size: MediaQuery.of(context).size.width * 0.20,),
-              ),
-              // VerticalDivider(),
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    userName == ''
-                        ? Text(
-                            'Guest 696',
-                            style: TextStyle(fontSize: 30.0),
-                          )
-                        : Text(
-                            userName,
-                            style: TextStyle(fontSize: 30.0),
-                          ),
-                    Text("Rating: ⭐⭐⭐⭐"),
-                  ],
-                ),
-              )
-            ],
-          )),
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  CircleAvatar(
+                    radius: MediaQuery.of(context).size.width * 0.10,
+                    child: Icon(
+                      Icons.face,
+                      color: Colors.white,
+                      size: MediaQuery.of(context).size.width * 0.20,
+                    ),
+                  ),
+                  // VerticalDivider(),
+                  Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        userName == ''
+                            ? Text(
+                                'Guest 696',
+                                style: TextStyle(fontSize: 30.0),
+                              )
+                            : Text(
+                                userName,
+                                style: TextStyle(fontSize: 30.0),
+                              ),
+                        Text("Rating: ⭐⭐⭐⭐"),
+                      ],
+                    ),
+                  )
+                ],
+              )),
           ListTile(
             leading: Icon(Icons.add),
-            title: Text("Quizz", style: TextStyle(fontSize: 20.0),),
+            title: Text(
+              "Quizz",
+              style: TextStyle(fontSize: 20.0),
+            ),
             onTap: () {
               Navigator.push(
                   context,
@@ -147,7 +156,10 @@ class TheDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.add),
-            title: Text("Crossword", style: TextStyle(fontSize: 20.0),),
+            title: Text(
+              "Crossword",
+              style: TextStyle(fontSize: 20.0),
+            ),
             onTap: () {
               Navigator.push(
                   context,
@@ -157,7 +169,10 @@ class TheDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.add),
-            title: Text("Jumbled Words", style: TextStyle(fontSize: 20.0),),
+            title: Text(
+              "Jumbled Words",
+              style: TextStyle(fontSize: 20.0),
+            ),
             onTap: () {
               Navigator.push(
                   context,

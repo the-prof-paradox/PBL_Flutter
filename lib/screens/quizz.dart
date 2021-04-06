@@ -1,7 +1,7 @@
 import 'package:PBL/businessLogic/quizQues.dart';
 import 'package:PBL/screens/homepage.dart';
 import 'package:flutter/material.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
+//import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
@@ -24,29 +24,35 @@ class _QuizzState extends State<Quizz> {
         //   title: 'Finished!',
         //   desc: 'You\'ve reached the end of the quiz!',
         // ).show();
-        showDialog(context: context,
-        barrierDismissible: true,
-        child: AlertDialog(
-          title: Text('Finished!', textAlign: TextAlign.center,),
-          content: Text('You\'re score is: $theScore', textAlign: TextAlign.center,),
-          actions: [
-            FlatButton(
-              onPressed: (){
-                Navigator.pushReplacement(context, 
-                MaterialPageRoute(
-                      builder: (BuildContext context) => MyHomePage())
-                      );
-              },
-              child: Text("Ok"),),
-          ],
-          )
+        showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (context) => AlertDialog(
+            title: Text(
+              'Finished!',
+              textAlign: TextAlign.center,
+            ),
+            content: Text(
+              'You\'re score is: $theScore',
+              textAlign: TextAlign.center,
+            ),
+            actions: [
+              FlatButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => MyHomePage()));
+                },
+                child: Text("Ok"),
+              ),
+            ],
+          ),
         );
         quizBrain.reset();
         scoreKeeper = [];
         theScore = 0;
-      }
-
-      else {
+      } else {
         if (userPickedAnswer == correctAnswer) {
           theScore++;
           scoreKeeper.add(Icon(
@@ -77,21 +83,25 @@ class _QuizzState extends State<Quizz> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-              Text("Score: ", style: TextStyle(fontSize: 18.0),),
-              Container(
-                padding: EdgeInsets.all(3.0),
-                color: Colors.orangeAccent,
-                child: Text("$theScore",
-                  style: TextStyle(fontSize: 69.6, color: Colors.white),
+                Text(
+                  "Score: ",
+                  style: TextStyle(fontSize: 18.0),
                 ),
-              ),
-              
-            ],),
-          ), 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: scoreKeeper,
-        ),
+                Container(
+                  padding: EdgeInsets.all(3.0),
+                  color: Colors.orangeAccent,
+                  child: Text(
+                    "$theScore",
+                    style: TextStyle(fontSize: 69.6, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: scoreKeeper,
+          ),
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -99,64 +109,65 @@ class _QuizzState extends State<Quizz> {
             margin: const EdgeInsets.all(20.0),
             padding: const EdgeInsets.all(20.0),
             child: Text(
-                quizBrain.getQuestionText(),
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25.0,
-                  // color: Colors.white,
-                ),
+              quizBrain.getQuestionText(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 25.0,
+                // color: Colors.white,
               ),
+            ),
           ),
           Container(
             // margin: const EdgeInsets.all(5.0),
             padding: const EdgeInsets.all(20.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                RaisedButton(
-                  color: Colors.orange,
-                  child: Text(quizBrain.getOptionsText()[0],
-                  style: TextStyle(fontSize: 16.0),
-                  textAlign: TextAlign.center,
-                  ),
-                  onPressed: (){
-                    checkAnswer(quizBrain.getOptionsText()[0]);
-                  }),
-                SizedBox(height: 5.0),
-
-                RaisedButton(
-                  color: Colors.orange,
-                  child: Text(quizBrain.getOptionsText()[1],
-                  style: TextStyle(fontSize: 16.0),
-                  textAlign: TextAlign.center,
-                  ),
-                  onPressed: (){
-                    checkAnswer(quizBrain.getOptionsText()[1]);
-                  }),
-                SizedBox(height: 5.0),
-
-                RaisedButton(
-                  color: Colors.orange,
-                  child: Text(quizBrain.getOptionsText()[2],
-                  style: TextStyle(fontSize: 16.0),
-                  textAlign: TextAlign.center,
-                  ),
-                  onPressed: (){
-                    checkAnswer(quizBrain.getOptionsText()[2]);
-                  }),
-                SizedBox(height: 5.0),
-
-                RaisedButton(
-                  color: Colors.orange,
-                  child: Text(quizBrain.getOptionsText()[3],
-                  style: TextStyle(fontSize: 16.0),
-                  textAlign: TextAlign.center,
-                  ),
-                  onPressed: (){
-                    checkAnswer(quizBrain.getOptionsText()[3]);
-                  }),
-            ]),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  RaisedButton(
+                      color: Colors.orange,
+                      child: Text(
+                        quizBrain.getOptionsText()[0],
+                        style: TextStyle(fontSize: 16.0),
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () {
+                        checkAnswer(quizBrain.getOptionsText()[0]);
+                      }),
+                  SizedBox(height: 5.0),
+                  RaisedButton(
+                      color: Colors.orange,
+                      child: Text(
+                        quizBrain.getOptionsText()[1],
+                        style: TextStyle(fontSize: 16.0),
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () {
+                        checkAnswer(quizBrain.getOptionsText()[1]);
+                      }),
+                  SizedBox(height: 5.0),
+                  RaisedButton(
+                      color: Colors.orange,
+                      child: Text(
+                        quizBrain.getOptionsText()[2],
+                        style: TextStyle(fontSize: 16.0),
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () {
+                        checkAnswer(quizBrain.getOptionsText()[2]);
+                      }),
+                  SizedBox(height: 5.0),
+                  RaisedButton(
+                      color: Colors.orange,
+                      child: Text(
+                        quizBrain.getOptionsText()[3],
+                        style: TextStyle(fontSize: 16.0),
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () {
+                        checkAnswer(quizBrain.getOptionsText()[3]);
+                      }),
+                ]),
           ),
         ],
       )),
